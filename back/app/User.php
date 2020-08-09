@@ -5,6 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
+use App\Comment;
+use App\Post;
+use Illuminate\Database\Eloquent\Model;
+Use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -36,4 +41,57 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relationship 1 to N with Post    
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
+
+    // Relationship 1 to N with Comment    
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
+    // Relationship N to N with follower    
+    public function follower(){
+        return $this->belongsToMany('App\User','user_follower');
+    }
+
+    // Relationship N to N with user (the person being followed)    
+    public function userFollower(){
+        return $this->belongsToMany('App\User');
+    }
+
+    public function createUser(Request $request ){
+        $this->name = $request->name;
+        $this->email = $request->email;
+        $this->moderator = $request->moderator;
+        $this->password = $request->password;
+        $this->phone = $request->phone;
+        $this->save();
+    }
+
+    public function updateUser(Request $request ){
+        if($request->name) {
+            $this->name = $request->name;
+        }
+        if($request->email) {
+            $this->email = $request->email;
+        }
+        if($request->moderator) {
+            $this->moderator = $request->moderator;
+        }
+        if($request->password) {
+            $this->password = $request->password;
+        }
+        if($request->phone) {
+            $this->phone = $request->phone;
+        }
+        $this->save();
+    }
+    
+
+    use SoftDeletes;
+    
+
 }
