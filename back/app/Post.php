@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\PostRequest;
 
 
 class Post extends Model
@@ -14,7 +15,7 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function createPost(Request $request ){
+    public function createPost(PostRequest $request ){
         $this->text = $request->text;
         $this->title = $request->title;
         $this->category = $request->category;
@@ -28,6 +29,7 @@ class Post extends Model
             $file= $request->file('image');
             $filename= rand().'.'.$file->getClientOriginalExtension();
             $path=$file->storeAs('localPhotos', $filename);
+            Storage::setVisibility($path, 'public');
             $this->image=$path;
         }
 
@@ -43,7 +45,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function updatePost(Request $request ){
+    public function updatePost(PostRequest $request ){
         if( $request->text){
             $this->text = $request->text;
         }

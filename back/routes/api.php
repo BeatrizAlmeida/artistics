@@ -30,6 +30,8 @@ Route::get('deletedUser','UserController@deletedUser');
 Route::put('restoreUser/{id}','UserController@restoreUser');
 // permanently deletes
 Route::delete('forceDelete/{id}','UserController@forceDelete');
+//user follow user
+Route::put('follow/{id}/{follower_id}','UserController@follow');
 
 //Post
 //CRUD

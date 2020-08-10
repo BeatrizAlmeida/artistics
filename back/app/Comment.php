@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\CommentRequest;
 
 
 class Comment extends Model
@@ -19,7 +20,7 @@ class Comment extends Model
         return $this->belongsTo('App\Post');
     }
 
-    public function createComment(Request $request ){
+    public function createComment(CommentRequest $request ){
         $this->text = $request->text;
         if( $request->image){
             if (!Storage::exists('localPhotos/')){
@@ -36,7 +37,7 @@ class Comment extends Model
         $this->save();
     }
 
-    public function updateComment(Request $request){
+    public function updateComment(CommentRequest $request){
 
         if ($request->text){
             $this->text = $request->text;

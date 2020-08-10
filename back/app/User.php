@@ -10,6 +10,7 @@ use App\Comment;
 use App\Post;
 use Illuminate\Database\Eloquent\Model;
 Use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Http\Requests\UserRequest;
 
 class User extends Authenticatable
 {
@@ -59,19 +60,20 @@ class User extends Authenticatable
 
     // Relationship N to N with user (the person being followed)    
     public function userFollower(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User','user_follower');
     }
 
-    public function createUser(Request $request ){
+    public function createUser(UserRequest $request ){
         $this->name = $request->name;
         $this->email = $request->email;
         $this->moderator = $request->moderator;
         $this->password = $request->password;
         $this->phone = $request->phone;
+        $this->biography = $request->biography;
         $this->save();
     }
 
-    public function updateUser(Request $request ){
+    public function updateUser(UserRequest $request ){
         if($request->name) {
             $this->name = $request->name;
         }
@@ -86,6 +88,9 @@ class User extends Authenticatable
         }
         if($request->phone) {
             $this->phone = $request->phone;
+        }
+        if($request->biography) {
+            $this->biography = $request->biography;
         }
         $this->save();
     }

@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
-    public function createUser ( Request $request ){
+    public function createUser ( UserRequest $request ){
         $user = new User;
         $user->createUser($request);
         return response()->json($user);
@@ -23,7 +24,7 @@ class UserController extends Controller
         return response()->json([$user]);
     }
 
-    public function updateUser(Request $request, $id){
+    public function updateUser(UserRequest $request, $id){
         $user =  User::find($id);
         if($user){
             $user->updateUser($request);

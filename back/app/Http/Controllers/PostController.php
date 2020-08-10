@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    public function createPost ( Request $request ){
+    public function createPost ( PostRequest $request ){
         $post = new Post;
         $post->createPost($request);
         return response()->json($post);
@@ -24,7 +25,7 @@ class PostController extends Controller
         return response()->json([$post]);
     }
 
-    public function updatePost(Request $request, $id){
+    public function updatePost(PostRequest $request, $id){
         $post = Post::find($id);
         if($post){
             $post->updatePost($request);
