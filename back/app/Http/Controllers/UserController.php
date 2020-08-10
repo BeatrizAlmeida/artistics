@@ -71,12 +71,12 @@ class UserController extends Controller
 
     public function follow($user_id, $follower_id){
         $user = User::findOrFail($user_id);
-        $user->follower()->attach($follower_id);
+        $user->followers()->attach($follower_id);
         return response()->json($user);
     }
     public function unfollow($user_id, $follower_id){
         $user = User::findOrFail($user_id);
-        $user->follower()->detach($follower_id);
+        $user->followers()->detach($follower_id);
         return response()->json($user);
     }
 }

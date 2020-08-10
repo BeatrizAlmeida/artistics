@@ -53,14 +53,14 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
-    // Relationship N to N with follower    
-    public function follower(){
-        return $this->belongsToMany('App\User','user_follower');
+    // Relationship N to N - rturns the people that the user is followed
+    public function followers(){
+        return $this->belongsToMany('App\User','follower_user', 'user_id', 'follower_id');
     }
 
-    // Relationship N to N with user (the person being followed)    
-    public function userFollower(){
-        return $this->belongsToMany('App\User','user_follower');
+    // Relationship N to N - returns the people the user follows    
+    public function following(){
+        return $this->belongsToMany('App\User','follower_user', 'follower_id', 'user_id');
     }
 
     public function createUser(UserRequest $request ){

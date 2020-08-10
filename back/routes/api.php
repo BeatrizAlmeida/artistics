@@ -32,6 +32,7 @@ Route::put('restoreUser/{id}','UserController@restoreUser');
 Route::delete('forceDelete/{id}','UserController@forceDelete');
 //user follow user
 Route::put('follow/{id}/{follower_id}','UserController@follow');
+Route::delete('unfollow/{id}/{follower_id}','UserController@unfollow');
 
 //Post
 //CRUD
