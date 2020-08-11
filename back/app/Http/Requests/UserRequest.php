@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
                 'phone' =>'celular',
                 'moderator' =>'required|boolean',
                 'biography' =>'nullable',
+                'image' =>'image',
             ];
         }
         if($this->isMethod('put')){
@@ -45,6 +46,7 @@ class UserRequest extends FormRequest
                 'phone' =>'celular',
                 'moderator' =>'boolean',
                 'biography' =>'nullable',
+                'image' =>'image',
             ];
         }
     }
@@ -58,7 +60,8 @@ class UserRequest extends FormRequest
             'password.required'=>'Insira sua senha.',
             'passowrd.confirmed'=>'As senhas inseridas não são compatíveis. Por favor, preencha novamente.',
             'moderator.boolean'=>'Moderador deve ter valor 0, para false, ou 1 para true. ',
-            'phone.celular'=>'Este não é um formato válido de número celular. Formato válido: 99999-9999 ou 9999-9999'
+            'phone.celular'=>'Este não é um formato válido de número celular. Formato válido: 99999-9999 ou 9999-9999',
+            'image.image'=>'Neste campo deve ser enviado uma imagem.',
         ];
     }
 

@@ -11,11 +11,15 @@ use App\Post;
 use Illuminate\Database\Eloquent\Model;
 Use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Passport\HasApiTokens;
+
 
 class User extends Authenticatable
 {
     use Notifiable;
-
+    //Passport
+    use HasApiTokens; 
     /**
      * The attributes that are mass assignable.
      *
@@ -67,9 +71,21 @@ class User extends Authenticatable
         $this->name = $request->name;
         $this->email = $request->email;
         $this->moderator = $request->moderator;
-        $this->password = $request->password;
+        $this->password =  bcrypt($request->password);
         $this->phone = $request->phone;
         $this->biography = $request->biography;
+
+         //makes a new folder if it doesen't exists then saves in database the path of the file
+        if( $request->image){
+            if (!Storage::exists('localPhotos/')){
+                Storage::makeDirectory('localPhotos/', 0775,true);
+            }
+            $file= $request->file('image');
+            $filename= rand().'.'.$file->getClientOriginalExtension();
+            $path=$file->storeAs('localPhotos', $filename);
+            Storage::setVisibility($path, 'public');
+            $this->image=$path;
+        }
         $this->save();
     }
 
@@ -84,13 +100,20 @@ class User extends Authenticatable
             $this->moderator = $request->moderator;
         }
         if($request->password) {
-            $this->password = $request->password;
+            $this->password =  bcrypt($request->password);
         }
         if($request->phone) {
             $this->phone = $request->phone;
         }
         if($request->biography) {
             $this->biography = $request->biography;
+        }
+        if( $request->image){
+            Storage::delete($this->image);
+            $file= $request->file('image');
+            $filename= rand().'.'.$file->getClientOriginalExtension();
+            $path=$file->storeAs('localPhotos', $filename);
+            $this->image=$path;
         }
         $this->save();
     }

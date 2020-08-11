@@ -34,6 +34,7 @@ Route::delete('forceDelete/{id}','UserController@forceDelete');
 Route::put('follow/{id}/{follower_id}','UserController@follow');
 Route::delete('unfollow/{id}/{follower_id}','UserController@unfollow');
 
+
 //Post
 //CRUD
 Route::post('createPost','PostController@createPost');
@@ -49,3 +50,11 @@ Route::get('showComment/{id}','CommentController@showComment');
 Route::get('listComment','CommentController@listComment');
 Route::put('updateComment/{id}','CommentController@updateComment');
 Route::delete('deleteComment/{id}','CommentController@deleteComment');
+
+//PASSPORT
+Route::post('register', 'API\PassportController@register');
+Route::post('login', 'API\PassportController@login');
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::get('logout', 'API\PassportController@logout');
+    Route::get('getDetails', 'API\PassportController@getDetails');
+}); 
