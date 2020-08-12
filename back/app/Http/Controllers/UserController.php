@@ -70,10 +70,14 @@ class UserController extends Controller
     }
 
     public function follow($user_id, $follower_id){
+        if($user_id == $follower_id){
+            return response()->json(['Usuário não pode seguir a si mesmo.']);
+        }
         $user = User::findOrFail($user_id);
         $user->followers()->attach($follower_id);
         return response()->json($user);
     }
+
     public function unfollow($user_id, $follower_id){
         $user = User::findOrFail($user_id);
         $user->followers()->detach($follower_id);
