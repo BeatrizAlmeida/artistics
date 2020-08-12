@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use Laravel\Passport\HasApiTokens;
 use Auth;
+use App\Notifications\RegisterUser;
 
 class PassportController extends Controller
 {
@@ -19,7 +20,8 @@ class PassportController extends Controller
         $newuser = new User;
         $newuser->createUser($request);
         $success['token']=$newuser->createToken('MyApp')->accessToken;
-        return response()->json(['Success' => $success, 'locator'=>$newuser],200);
+        $newuser->notify(new RegisterUser($newuser));
+        return response()->json(['Success' => $success, 'user'=>$newuser],200);
     }
 
     public function login()
