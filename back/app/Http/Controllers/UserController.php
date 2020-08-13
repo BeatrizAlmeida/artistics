@@ -26,14 +26,10 @@ class UserController extends Controller
         return response()->json([$user]);
     }
 
-    public function updateUser(UserRequest $request, $id){
-        $user =  User::find($id);
-        if($user){
-            $user->updateUser($request);
-            return response()->json($user);
-        }
-        return response()->json(['usuário não encontrado']);
-
+    public function updateUser(UserRequest $request){
+        $user = Auth::user();
+        $user->updateUser($request);
+        return response()->json($user);
     }
 
     //remove with SoftDelete

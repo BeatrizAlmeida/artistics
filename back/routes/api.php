@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('showUser/{id}','UserController@showUser');
 Route::get('listUser','UserController@listUser');
 Route::post('createUser','UserController@createUser');
-Route::put('updateUser/{id}','UserController@updateUser');
+Route::put('updateUser','UserController@updateUser')->middleware('auth:api');
 Route::delete('deleteUser/{id}','UserController@deleteUser');
 
 //soft deleted users
@@ -54,9 +54,11 @@ Route::get('checkLikes/{id}/{post_id}','UserController@checkLikes');
 //CRUD
 Route::get('showPost/{id}','PostController@showPost');
 Route::get('listPost','PostController@listPost');
-Route::post('createPost','PostController@createPost');
-Route::put('updatePost/{id}','PostController@updatePost');
-Route::delete('deletePost/{id}','PostController@deletePost');
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::post('createPost','PostController@createPost');
+    Route::put('updatePost/{id}','PostController@updatePost')->middleware('post.owner');
+    Route::delete('deletePost/{id}','PostController@deletePost')->middleware('post.owner');
+});
 
 // likes in the post
 Route::get('numberLikes/{id}','PostController@numberLikes');
@@ -66,9 +68,11 @@ Route::get('numberLikes/{id}','PostController@numberLikes');
 //CRUD
 Route::get('showComment/{id}','CommentController@showComment');
 Route::get('listComment','CommentController@listComment');
-Route::post('createComment','CommentController@createComment');
-Route::put('updateComment/{id}','CommentController@updateComment');
-Route::delete('deleteComment/{id}','CommentController@deleteComment');
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::post('createComment','CommentController@createComment');
+    Route::put('updateComment/{id}','CommentController@updateComment')->middleware('comment.owner');
+    Route::delete('deleteComment/{id}','CommentController@deleteComment')->middleware('comment.owner');
+});
 
 
 //PASSPORT
