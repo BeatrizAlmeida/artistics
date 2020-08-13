@@ -15,6 +15,11 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
+    // Relationship N to N - user likes post    
+    public function like(){
+        return $this->belongsToMany('App\User');
+    }
+
     public function createPost(PostRequest $request ){
         $this->text = $request->text;
         $this->title = $request->title;

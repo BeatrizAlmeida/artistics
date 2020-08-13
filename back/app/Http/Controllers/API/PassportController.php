@@ -34,7 +34,7 @@ class PassportController extends Controller
         }
         else
         {
-            return response()->json(['error'=>'Unauthorized', 'status' => 401]);
+            return response()->json(['error'=>'E-mail ou senha incorretos', 'status' => 401]);
         }
     }
 

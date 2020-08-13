@@ -42,4 +42,13 @@ class PostController extends Controller
         }
         return response()->json(['Não foi possível encontrar o post.']);
     }
+    
+    // returns the number of likes on the post
+    public function numberLikes($id){
+        $post =  Post::find($id);
+        if($post){
+            return response()->json($post->like()->count());
+        }
+        return response()->json(['Não foi possível encontrar o post.']);
+    }
 }

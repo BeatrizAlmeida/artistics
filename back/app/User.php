@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User','follower_user', 'follower_id', 'user_id');
     }
 
+    // Relationship N to N - user likes post    
+    public function like(){
+        return $this->belongsToMany('App\Post');
+    }
+    
     public function createUser(UserRequest $request ){
         $this->name = $request->name;
         $this->email = $request->email;
