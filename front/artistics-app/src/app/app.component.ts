@@ -20,16 +20,21 @@ export class AppComponent implements OnInit {
     {
       title: 'My Profile',
       url: '/profile',
+    },
+
+    {
+      title: 'Outbox',
+      url: '/first-page',
       icon: 'paper-plane'
     },
     {
       title: 'Favorites',
-      url: '/folder/Favorites',
+      url: '/register',
       icon: 'heart'
     },
     {
       title: 'Archived',
-      url: '/folder/Archived',
+      url: '/register2',
       icon: 'archive'
     },
   
