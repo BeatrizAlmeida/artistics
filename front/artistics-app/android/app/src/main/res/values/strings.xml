@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">artistics</string>
+    <string name="title_activity_main">artistics</string>
+    <string name="package_name">com.io.ionic.starter.artistics</string>
+    <string name="custom_url_scheme">com.io.ionic.starter.artistics</string>
+</resources>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <img src="../assets/reprodutor-de-musica.png"/>
+            <ion-checkbox formControlName="music"></ion-checkbox>
+            <ion-card-title>Música</ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <img src="../assets/tela-de-pintura.png"/>
+            <ion-checkbox formControlName="paint"></ion-checkbox>
+            <ion-card-title>Pintura</ion-card-title>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <img src="../assets/camera-fotografica.png"/>
+            <ion-checkbox formControlName="photography"></ion-checkbox>
+            <ion-card-title>Fotografia</ion-card-title>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <img src="../assets/escrita.png"/>
+            <ion-checkbox formControlName="draw"></ion-checkbox>
+            <ion-card-title>Escrita</ion-card-title>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="submit-button">
+        <ion-button type="submit" color="primary" shape="round">CADASTRAR</ion-button>
+      </ion-row>
+    </ion-grid>
+  </form>  
+</ion-content>
