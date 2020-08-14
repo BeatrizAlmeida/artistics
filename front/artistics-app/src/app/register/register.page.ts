@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
+import { AuthServiceService } from '../services/auth-service.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -13,7 +15,9 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   image: SafeResourceUrl;
 
-  constructor(public formbuilder: FormBuilder,
+  constructor(public authService: AuthServiceService,
+              public formbuilder: FormBuilder,
+              public router: Router,
               private sanitizer: DomSanitizer) {
 
     //CRIANDO E VALIDANDO ATRIBUTOS DO FORMULARIO
@@ -58,8 +62,18 @@ export class RegisterPage implements OnInit {
   }
 
   submitForm(form) {
-    console.log(form);
     console.log(form.value);
+    form.value.moderator = 0;
+    this.authService.register(form.value).subscribe(
+      (res) => {
+        console.log(res);
+        localStorage.setItem('userToken', res.Success.token);
+        this.router.navigate(['/home'])
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
 }
