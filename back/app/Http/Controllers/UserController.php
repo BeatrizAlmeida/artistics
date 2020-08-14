@@ -140,4 +140,15 @@ class UserController extends Controller
             }       
         }                
     }
+
+    //returns a list of posts of users being followed
+    public function listFollowingPosts(){
+        $user = Auth::user();
+        $i = 0;
+        foreach ($user->following as $user){
+            $posts[$i] = $user->posts;
+            $i++;
+        }
+        return response()->json($posts);
+    }
 }

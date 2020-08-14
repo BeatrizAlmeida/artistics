@@ -38,8 +38,10 @@ Route::delete('forceDelete/{id}','UserController@forceDelete');
 //user follow 
 Route::get('numberFollowers/{id}','UserController@numberFollowers');
 Route::get('numberFollowing/{id}','UserController@numberFollowing');
+Route::get('listFollowingPosts','UserController@listFollowingPosts')->middleware('auth:api');
 Route::put('follow/{id}/{follower_id}','UserController@follow');
 Route::delete('unfollow/{id}/{follower_id}','UserController@unfollow');
+
 
 //user likes or dislikes post
 Route::group(['middleware'=>'auth:api'], function(){
