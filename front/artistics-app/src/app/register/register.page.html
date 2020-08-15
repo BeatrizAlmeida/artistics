@@ -7,11 +7,11 @@
 </ion-header>
 
 <ion-content>
+  <img src='/assets/img/logoart.PNG' height=90 width=290 alt='logo' class='logo'/>
   <!--CRIANDO O FORMULARIO-->
   <div class="form-content">
     <h3>Cadastre-se agora</h3>
     <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
-
       <img
           [src]="image"
           vertical="center"
@@ -52,8 +52,8 @@
       </ion-item>
     </ion-list>
     <!--CRIANDO BOTAO SUBMIT-->
-    <ion-row class="submit-button">
-      <ion-button fill="outline" type="submit" color="primary" shape="round" [disabled]="registerForm.invalid">Próximo passo</ion-button>
+    <ion-row class='ion-justify-content-center'>
+      <ion-button fill="outline" type="submit" color="danger" shape="round" [disabled]="registerForm.invalid">Próximo passo</ion-button>
     </ion-row>
     </form>
   </div>

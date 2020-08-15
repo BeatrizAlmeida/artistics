@@ -1,27 +1,25 @@
 <ion-header>
-  <ion-toolbar>
+  <!--<ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar>-->
 </ion-header>
 
 <ion-content>
   <ion-slides pager="true" [options]="slideOpts">
     <ion-slide class="slide-01">
-      <h2>Artistics. Um ambiente para todo tipo de arte.</h2>
+      <img src='/assets/img/logoart.PNG'/>
+      <h2>Um ambiente para todo tipo de arte.</h2>
     </ion-slide>
     <ion-slide class="slide-02">
-      <img src="../assets/091-viral.png"/>
       <h5>Divulgue seus trabalhos artísticos e acesse conteúdos de sua preferência.</h5>
     </ion-slide>
     <ion-slide class="slide-03">
-      <img src="../assets/083-social reach.png"/>
       <h5>Participe deste mundo feito para artistas profissionais e amadores.</h5>
     </ion-slide>
     <ion-slide class="slide-04">
-      <img src="../assets/067-location.png"/>
-      <h5>Explore agora mesmo (link).</h5><br><ion-button expand="block" fill="outline" color="danger">Fazer Login</ion-button><br><ion-button expand="block" color="danger">Quero me cadastrar</ion-button>
+      <h5>Explore agora mesmo (link).</h5><br><ion-button expand="block" fill="outline" color="danger" a routerLink="/login">Fazer Login</ion-button><br><ion-button expand="block" color="danger" a routerLink="/register">Quero me cadastrar</ion-button>
     </ion-slide>
   </ion-slides>
 </ion-content>

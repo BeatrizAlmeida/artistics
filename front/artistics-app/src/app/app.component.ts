@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     {
       title: 'My Profile',
       url: '/profile',
+      icon: 'person'
     },
 
     {
