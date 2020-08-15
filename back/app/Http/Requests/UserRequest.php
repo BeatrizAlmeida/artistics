@@ -32,10 +32,10 @@ class UserRequest extends FormRequest
                 'name' =>'required|string',
                 'email' =>'required|email|unique:users,email',
                 'password' =>'required|confirmed',
-                'phone' =>'celular',
+                'phone' =>'celular_com_ddd|nullable',
                 'moderator' =>'required|boolean',
                 'biography' =>'nullable',
-                'image' =>'image',
+                'image' =>'image|nullable',
             ];
         }
         if($this->isMethod('put')){
@@ -43,10 +43,10 @@ class UserRequest extends FormRequest
                 'name' =>'string',
                 'email' =>'email|unique:users,email',
                 'password' =>'confirmed',
-                'phone' =>'celular',
+                'phone' =>'celular_com_ddd|nullable',
                 'moderator' =>'boolean',
                 'biography' =>'nullable',
-                'image' =>'image',
+                'image' =>'image|nullable',
             ];
         }
     }
