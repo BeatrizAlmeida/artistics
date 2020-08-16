@@ -57,7 +57,7 @@ Route::get('listPost','PostController@listPost');
 Route::group(['middleware'=>'auth:api'], function(){
     Route::post('createPost','PostController@createPost');
     Route::put('updatePost/{id}','PostController@updatePost')->middleware('post.owner');
-    Route::delete('deletePost/{id}','PostController@deletePost')->middleware('post.owner');
+    Route::delete('deletePost/{id}','PostController@deletePost')->middleware('moderatorOrOwner.post');
 });
 
 // likes in the post
@@ -71,7 +71,7 @@ Route::get('listComment','CommentController@listComment');
 Route::group(['middleware'=>'auth:api'], function(){
     Route::post('createComment','CommentController@createComment');
     Route::put('updateComment/{id}','CommentController@updateComment')->middleware('comment.owner');
-    Route::delete('deleteComment/{id}','CommentController@deleteComment')->middleware('comment.owner');
+    Route::delete('deleteComment/{id}','CommentController@deleteComment')->middleware('moderatorOrOwner.comment');
 });
 
 

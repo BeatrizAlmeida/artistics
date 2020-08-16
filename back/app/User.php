@@ -18,7 +18,7 @@ use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable
 {
     use Notifiable;
-    //Passport
+    //For Authentication
     use HasApiTokens; 
     /**
      * The attributes that are mass assignable.
@@ -47,27 +47,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relationship 1 to N with Post    
     public function posts(){
         return $this->hasMany('App\Post');
     }
 
-    // Relationship 1 to N with Comment    
     public function comments(){
         return $this->hasMany('App\Comment');
     }
 
-    // Relationship N to N - rturns the people that the user is followed
     public function followers(){
         return $this->belongsToMany('App\User','follower_user', 'user_id', 'follower_id');
     }
 
-    // Relationship N to N - returns the people the user follows    
     public function following(){
         return $this->belongsToMany('App\User','follower_user', 'follower_id', 'user_id');
     }
 
-    // Relationship N to N - user likes post    
     public function like(){
         return $this->belongsToMany('App\Post');
     }

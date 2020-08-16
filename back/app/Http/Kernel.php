@@ -66,5 +66,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'comment.owner' => \App\Http\Middleware\CheckCommentOwner::class,
         'post.owner' => \App\Http\Middleware\CheckPostOwner::class,
+        'moderatorOrOwner.comment' => \App\Http\Middleware\IsModeratorOrOwnerComment::class,
+        'moderatorOrOwner.post' => \App\Http\Middleware\IsModeratorOrOwnerPost::class,
     ];
 }

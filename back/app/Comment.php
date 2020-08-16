@@ -10,12 +10,10 @@ use App\Http\Requests\CommentRequest;
 
 class Comment extends Model
 {
-    // Relationship 1 to N with user    
     public function user(){
        return  $this->belongsTo('App\User');
     }
 
-    // Relationship 1 to N with post 
     public function post(){
         return $this->belongsTo('App\Post');
     }
