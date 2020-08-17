@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 import { AuthServiceService } from '../services/auth-service.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -18,7 +20,8 @@ export class RegisterPage implements OnInit {
   constructor(public authService: AuthServiceService,
               public formbuilder: FormBuilder,
               public router: Router,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              public toastController: ToastController) {
 
     //CRIANDO E VALIDANDO ATRIBUTOS DO FORMULARIO
     this.registerForm = this.formbuilder.group({
@@ -58,22 +61,46 @@ export class RegisterPage implements OnInit {
     });
 
     this.image = this.sanitizer.bypassSecurityTrustResourceUrl(photo && (photo.dataUrl));
+    console.log(photo);
 
   }
 
+  //MENSAGEM DE CONFIRMACAO DE CADASTRO
+  async errorToast() {
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: 'Email já cadastrado!',
+      duration: 4000
+    });
+    toast.present();
+  }
+  //MENSAGEM DE ERRO NO CADASTRO
+  async confirmToast() {
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: 'Cadastro feito com sucesso!',
+      duration: 4000
+    });
+    toast.present();
+  }
+
+  //ENVIANDO INFORMACOES PARA O BD ATRAVES DO BOTAO SUBMIT
   submitForm(form) {
     console.log(form.value);
     form.value.moderator = 0;
     this.authService.register(form.value).subscribe(
       (res) => {
         console.log(res);
+        this.confirmToast();
         localStorage.setItem('userToken', res.Success.token);
         this.router.navigate(['/home'])
       },
       (err) => {
         console.log(err);
+        this.errorToast();
       }
     );
   }
+
 
 }

@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <!--<ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-toolbar>-->
 </ion-header>
 
 <ion-content>
@@ -17,10 +17,10 @@
           vertical="center"
           horizontal="center"
           class="addFoto"/>
-      <ion-button (click)="takePicture()"><ion-icon size="large" name="camera"></ion-icon>
+      <ion-button (click)="takePicture()" ><ion-icon size="large" name="camera"></ion-icon>
       </ion-button>
       <p>Adicionar Foto</p>
-    <ion-list>
+
       <!--NOME COMPLETO-->
       <ion-item>
         <ion-label position="floating">Nome Completo</ion-label>
@@ -50,10 +50,10 @@
       <ion-item class='form-text error' *ngIf="registerForm.controls.password_confirmation.touched && registerForm.hasError('mismatchedPasswords') && registerForm.controls.password.valid">
         <ion-label no-margin stacked color="warning"><h6>Senhas não combinam</h6></ion-label>
       </ion-item>
-    </ion-list>
+    
     <!--CRIANDO BOTAO SUBMIT-->
     <ion-row class='ion-justify-content-center'>
-      <ion-button fill="outline" type="submit" color="danger" shape="round" [disabled]="registerForm.invalid">Próximo passo</ion-button>
+      <ion-button fill="outline" type="submit" color="light" shape="round" [disabled]="registerForm.invalid">Próximo passo</ion-button>
     </ion-row>
     </form>
   </div>

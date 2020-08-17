@@ -1,12 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot='start'>
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+  
   <img src='/assets/img/logoart.PNG' height=90 width=290 alt= logo class= 'logo'>
 
   <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">   
@@ -17,12 +14,12 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position='floating'>Password</ion-label>
+      <ion-label position='floating'>Senha</ion-label>
       <ion-input type="password" formControlName="password"></ion-input>
     </ion-item>
 
     <ion-row class= 'ion-justify-content-center'>
-      <ion-button type='submit' color='danger shade' shape='round'>Submit</ion-button>
+      <ion-button type='submit' color='warning shade' shape='round'>ENTRAR</ion-button>
     </ion-row>
 
   </form>

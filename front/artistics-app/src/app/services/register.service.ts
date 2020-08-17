@@ -10,7 +10,7 @@ export class RegisterService {
 
   constructor(public http: HttpClient) { }
 
-  createUser(form):Observable<any> {
-    return this.http.post( this.apiURL + 'createUser', form);
-  }
+  /*profile(form):Observable<any> {
+    return this.http.get( this.apiURL + 'showUser/{id}', form);
+  }*/
 }
