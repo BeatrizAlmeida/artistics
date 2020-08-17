@@ -11,10 +11,11 @@
   <ion-grid>
     <ion-col>
       <ion-row class="topo">
-        <p>Imagem do User</p>
-        <p>Nome do User</p>
-        <ion-button fill='outline' shape='round'><ion-icon name='create-outline' size='medium'></ion-icon>Editar Perfil</ion-button>
-        <ion-button shape='round'>Seguir</ion-button>
+        <p class='name'>{{loggedUser.name}}</p>
+
+        <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create-outline' size='small'></ion-icon>EDITAR PERFIL</ion-button>
+        <ion-button shape='round' color='warning' size='small'>SEGUIR</ion-button>
+
       </ion-row>
       <ion-row>
         <ion-col>

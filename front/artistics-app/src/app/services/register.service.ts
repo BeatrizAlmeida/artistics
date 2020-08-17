@@ -10,7 +10,4 @@ export class RegisterService {
 
   constructor(public http: HttpClient) { }
 
-  /*profile(form):Observable<any> {
-    return this.http.get( this.apiURL + 'showUser/{id}', form);
-  }*/
 }
