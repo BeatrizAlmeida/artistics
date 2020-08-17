@@ -114,6 +114,19 @@ class UserController extends Controller
         return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
+    
+    public function listFollowingPosts(){
+        $user = Auth::user();
+        $i = 0;
+        $posts = null;
+        // get the posts of who the user follows
+        foreach ($user->following as $user){
+            $posts[$i] = $user->posts;
+            $i++;
+        }
+        return response()->json($posts);
+    }
+
     public function like($post_id){
         $user = Auth::user();
         $post =  Post::find($post_id);
@@ -157,17 +170,5 @@ class UserController extends Controller
                 return response()->json(['Este post não existe.']);
             }       
         }                
-    }
-
-    public function listFollowingPosts(){
-        $user = Auth::user();
-        $i = 0;
-        $posts = null;
-        // get the posts of who the user follows
-        foreach ($user->following as $user){
-            $posts[$i] = $user->posts;
-            $i++;
-        }
-        return response()->json($posts);
     }
 }
