@@ -1,0 +1,27 @@
+ion-toolbar{
+    --ion-toolbar-background: #FF8C00	;
+}
+
+*{
+    --ion-background-color: #FFF5EE	;
+}
+
+ion-button{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-bottom: 5%;
+    margin-top:5%;
+    
+}
+
+ion-card{
+    --background: #FFF8DC	;
+}
+
+ion-textarea{
+    padding-left:5%;
+    padding-right:5%;
+    --background:#FFF5EE;
+}

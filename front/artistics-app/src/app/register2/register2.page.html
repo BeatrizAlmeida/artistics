@@ -9,28 +9,34 @@
 <ion-content>
   <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
     <p>Escolha assuntos de seu interesse:</p>
+
     <!--CRIANDO OS TABELAS NO BD-->
-    <ion-list>
+
       <ion-item>
         <ion-checkbox formControlName="music"></ion-checkbox>
         <ion-label>Música</ion-label>
       </ion-item>
+
       <ion-item>
         <ion-checkbox formControlName="paint"></ion-checkbox>
         <ion-label>Pintura</ion-label>
       </ion-item>
+
       <ion-item>
         <ion-checkbox formControlName="photography"></ion-checkbox>
         <ion-label>Fotografia</ion-label>
       </ion-item>
+
       <ion-item>
         <ion-checkbox formControlName="draw"></ion-checkbox>
         <ion-label>Desenho</ion-label>
       </ion-item>
-    </ion-list>
+
+
     <!--CRIANDO O BOTÃO SUBMIT-->
+
     <ion-row class="submit-button">
-      <ion-button type="submit" color="primary" shape="round">CADASTRAR</ion-button>
+      <ion-button type="submit" color="danger" shape="round">CADASTRAR</ion-button>
     </ion-row>
   </form>
 

@@ -1,11 +1,41 @@
-ion-toolbar {
-    color: #ffffff;
+ion-toolbar{
+    --ion-toolbar-background: #FF8C00;
 }
 
-img {
-    border-radius: 50%;
+
+*{
+    --ion-background-color: white;
+    --ion-text-color: black;
+}
+
+ion-item{
+    padding-bottom:2% ;
+    padding-top:2% ;
+    padding-left: 4%;
+    padding-right: 4%;
+    --ion-item-background: white;
+}
+
+ion-button {
     border-color: grey;
     width: 50%;
-    position: relative;
-    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-bottom:10% ;
 }
+
+h3{ 
+    text-align: center;
+    font-weight:300;
+}
+
+p {
+    text-align: center;
+    font-weight: 300;
+}
+
+
+
+
+

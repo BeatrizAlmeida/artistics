@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'register2',
     loadChildren: () => import('./register2/register2.module').then( m => m.Register2PageModule)
+  },
+  {
+    path: 'create-post',
+    loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
   }
 
 ];
