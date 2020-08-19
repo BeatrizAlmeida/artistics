@@ -108,7 +108,7 @@ class User extends Authenticatable
         if($request->biography) {
             $this->biography = $request->biography;
         }
-        if( $request->image){
+        if( $request->image && $request->image != null){
             Storage::delete($this->image);
             $file= $request->file('image');
             $filename= rand().'.'.$file->getClientOriginalExtension();

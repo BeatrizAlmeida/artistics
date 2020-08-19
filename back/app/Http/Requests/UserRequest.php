@@ -40,13 +40,11 @@ class UserRequest extends FormRequest
         }
         if($this->isMethod('put')){
             return [
-                'name' =>'string',
-                'email' =>'email|unique:users,email',
-                'password' =>'confirmed',
+                'name' =>'string|nullable',
                 'phone' =>'celular_com_ddd|nullable',
-                'moderator' =>'boolean',
                 'biography' =>'nullable',
-                'image' =>'image|nullable',
+                'moderator' =>'boolean',
+                'image' =>'nullable|image',
             ];
         }
     }
