@@ -26,6 +26,17 @@ export class AuthServiceService {
   }
 
   logout( form ): Observable<any> {
-    return this.http.post( this.apiURL + 'logout', form, this.httpHeaders);
+    return this.http.get( this.apiURL + 'logout', this.httpHeaders);
+  }
+
+  profile(): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.get( this.apiURL + 'getDetails', this.httpHeaders);
+  }
+
+  updateUser( form ): Observable<any> {
+    console.log(form);
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.put( this.apiURL + 'updateUser', form,  this.httpHeaders);
   }
 }

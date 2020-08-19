@@ -65,7 +65,7 @@ export class RegisterPage implements OnInit {
 
   }
 
-  //MENSAGEM DE CONFIRMACAO DE CADASTRO
+  //MENSAGEM DE ERRO NO CADASTRO
   async errorToast() {
     const toast = await this.toastController.create({
       position: 'top',
@@ -74,7 +74,7 @@ export class RegisterPage implements OnInit {
     });
     toast.present();
   }
-  //MENSAGEM DE ERRO NO CADASTRO
+  //MENSAGEM DE CONFIRMACAO DE CADASTRO
   async confirmToast() {
     const toast = await this.toastController.create({
       position: 'top',

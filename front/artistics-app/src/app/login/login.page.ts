@@ -15,7 +15,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  registerForm: FormGroup;
+  public registerForm: FormGroup;
   
 
   constructor(public formbuilder: FormBuilder,
@@ -57,13 +57,12 @@ export class LoginPage implements OnInit {
   }
 
   submitForm(form) {
-    console.log("entrei");
     console.log(form);
     this.authService.login(form.value).subscribe(
       (res) => {
         console.log(res);
         this.confirmToast();
-        localStorage.setItem('userToken', res.Success.token) //erro: deveria aparecer a mensagem de erro, pois o token é invalido devido a insercao de email ou senha incorreta
+        localStorage.setItem('userToken', res.Success.token) 
         this.router.navigate(['/home'])
       },
       (err) => {

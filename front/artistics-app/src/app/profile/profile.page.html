@@ -12,8 +12,8 @@
     <ion-col>
       <ion-row class="topo">
         <p>Imagem do User</p>
-        <p>Nome do User</p>
-        <ion-button fill='outline' shape='round'><ion-icon name='create-outline' size='medium'></ion-icon>Editar Perfil</ion-button>
+        <p>{{loggedUser.name}}</p>
+        <ion-button fill='outline' shape='round' a routerLink="../profile-edit"><ion-icon name='create-outline' size='medium'></ion-icon>Editar Perfil</ion-button>
         <ion-button shape='round'>Seguir</ion-button>
       </ion-row>
       <ion-row>
