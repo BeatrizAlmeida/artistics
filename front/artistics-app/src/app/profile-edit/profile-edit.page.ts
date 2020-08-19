@@ -81,6 +81,9 @@ export class ProfileEditPage implements OnInit {
   //ENVIANDO INFORMACOES PARA O BD ATRAVES DO BOTAO SUBMIT
   submitForm(form) {
     console.log(form.value);
+    if(this.image){
+        form.value.image = this.image['changingThisBreaksApplicationSecurity'];
+      }
     this.authService.updateUser(form.value).subscribe(
       (res) => {
         console.log(res);

@@ -12,7 +12,7 @@
   <div class="form-content">
     <h3>Cadastre-se agora</h3>
     <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
-      <img [src]="image" class="addFoto"/>
+      <img [src]="photo" class="addFoto"/>
       <ion-button (click)="takePicture()" ><ion-icon size="large" name="camera"></ion-icon>
       </ion-button>
       <p>Adicionar Foto</p>

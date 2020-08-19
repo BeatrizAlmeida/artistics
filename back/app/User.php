@@ -74,18 +74,8 @@ class User extends Authenticatable
         $this->password =  bcrypt($request->password);
         $this->phone = $request->phone;
         $this->biography = $request->biography;
-
-         //makes a new folder if it doesen't exists then saves in database the path of the file
-        if( $request->image){
-            if (!Storage::exists('localPhotos/')){
-                Storage::makeDirectory('localPhotos/', 0775,true);
-            }
-            $file= $request->file('image');
-            $filename= rand().'.'.$file->getClientOriginalExtension();
-            $path=$file->storeAs('localPhotos', $filename);
-            Storage::setVisibility($path, 'public');
-            $this->image=$path;
-        }
+        $this->image=$request->image;
+        
         $this->save();
     }
 
@@ -108,12 +98,8 @@ class User extends Authenticatable
         if($request->biography) {
             $this->biography = $request->biography;
         }
-        if( $request->image && $request->image != null){
-            Storage::delete($this->image);
-            $file= $request->file('image');
-            $filename= rand().'.'.$file->getClientOriginalExtension();
-            $path=$file->storeAs('localPhotos', $filename);
-            $this->image=$path;
+        if($request->image){
+            $this->image=$request->image;
         }
         $this->save();
     }

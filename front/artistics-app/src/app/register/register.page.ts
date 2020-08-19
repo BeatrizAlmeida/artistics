@@ -15,7 +15,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
-  image: SafeResourceUrl;
+  photo: SafeResourceUrl;
 
   constructor(public authService: AuthServiceService,
               public formbuilder: FormBuilder,
@@ -52,7 +52,7 @@ export class RegisterPage implements OnInit {
 
   // CRIANDO A FUNCAO TIRAR FOTO
   async takePicture() {
-    const photo = await Plugins.Camera.getPhoto({
+    const image = await Plugins.Camera.getPhoto({
       quality: 100,
       allowEditing: true,
       saveToGallery: true,
@@ -60,8 +60,8 @@ export class RegisterPage implements OnInit {
       source: CameraSource.Camera
     });
 
-    this.image = this.sanitizer.bypassSecurityTrustResourceUrl(photo && (photo.dataUrl));
-    console.log(photo);
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(image && (image.dataUrl));
+    console.log(image);
 
   }
 
@@ -88,6 +88,9 @@ export class RegisterPage implements OnInit {
   submitForm(form) {
     console.log(form.value);
     form.value.moderator = 0;
+    if(this.photo){
+        form.value.image = this.photo['changingThisBreaksApplicationSecurity'];
+      }
     this.authService.register(form.value).subscribe(
       (res) => {
         console.log(res);

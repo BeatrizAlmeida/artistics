@@ -14,7 +14,7 @@ class AlterUserTable extends Migration
     public function up()
     {
        Schema::table('users', function (Blueprint $table) {
-            $table->string('image')->nullable();
+            $table->longText('image')->nullable();
         });
     }
 
