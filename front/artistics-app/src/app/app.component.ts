@@ -34,9 +34,9 @@ export class AppComponent implements OnInit {
       icon: 'heart'
     },
     {
-      title: 'Archived',
-      url: '/register2',
-      icon: 'archive'
+      title: 'Sair',
+      url: '/logout',
+      icon: 'log-out'
     },
   
   ];

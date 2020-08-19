@@ -11,9 +11,9 @@
   <ion-grid>
     <ion-col>
       <ion-row class="topo">
-        <p class='name'>{{loggedUser.name}}</p>
+        <h3 class='name'>{{loggedUser.name}}</h3>
 
-        <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create-outline' size='small'></ion-icon>EDITAR PERFIL</ion-button>
+        <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
         <ion-button shape='round' color='warning' size='small'>SEGUIR</ion-button>
 
       </ion-row>
@@ -31,9 +31,15 @@
     </ion-col>
   </ion-grid>
 
-</ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color='warning'>
+      <ion-icon name="chevron-back"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button><ion-icon name="globe"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon name="home"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon name="create"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
-<ion-footer color="warning" class="ion-no-border">
-  <ion-icon name='home-outline' size='large'></ion-icon>
-  <ion-icon name='globe-outline' size='large'></ion-icon>
-</ion-footer>
+</ion-content>
