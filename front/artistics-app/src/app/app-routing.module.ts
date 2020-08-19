@@ -34,7 +34,12 @@ const routes: Routes = [
   {
     path: 'register2',
     loadChildren: () => import('./register2/register2.module').then( m => m.Register2PageModule)
+  },
+  {
+    path: 'profile-edit',
+    loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
   }
+
 
 ];
 

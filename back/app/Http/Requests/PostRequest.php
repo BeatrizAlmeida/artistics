@@ -57,12 +57,11 @@ class PostRequest extends FormRequest
     }
 
     /**
-     * 
      * If an error occurs, a JSON message will be sent informing the error
      *
+     * @param  mixed $validator
      * 
      */
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->errors(),

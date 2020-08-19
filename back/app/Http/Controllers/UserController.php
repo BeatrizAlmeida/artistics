@@ -17,8 +17,11 @@ class UserController extends Controller
     }
 
     public function showUser ($id){
-        $user = User::findOrFail($id);
-        return response()->json($user);
+        $user = User::find($id);
+        if($user){
+            return response()->json($user);
+        }
+        return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
     public function listUser(){
@@ -32,7 +35,12 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    //remove with SoftDelete
+    /**
+     * remove with SoftDelete 
+     *
+     * @param  integer $id
+     * @return string
+     */
     public function deleteUser($id){
         if(User::find($id)){
             User::destroy($id);
@@ -41,14 +49,17 @@ class UserController extends Controller
         return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
-    //list all users soft deleted
+    /**
+     * list all users soft deleted  
+     *
+     * @return array
+     */
     public function deletedUser(){
         $query= User::onlyTrashed()->get();
         return response()->json($query);
         
     }
 
-    //restore an user soft deleted
     public function restoreUser($id){
         if(User::withTrashed()->where('id', $id)->restore()){
             return response()->json(['Usuário restaurado ao sistema.']);
@@ -57,7 +68,12 @@ class UserController extends Controller
   
     }
 
-    // permanently deletes
+    /**
+     * permanently deletes 
+     *
+     * @param  integer $id
+     * @return string
+     */
     public function forceDelete($id){
         $user = User::find($id);
         if($user){
@@ -82,7 +98,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    // returns the number of user followers
     public function numberFollowers($id){
         $user =  User::find($id);
         if($user){
@@ -91,7 +106,6 @@ class UserController extends Controller
         return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
-    //returns the number of user following
     public function numberFollowing($id){
         $user =  User::find($id);
         if($user){
@@ -100,7 +114,19 @@ class UserController extends Controller
         return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
-    //user likes a post
+    
+    public function listFollowingPosts(){
+        $user = Auth::user();
+        $i = 0;
+        $posts = null;
+        // get the posts of who the user follows
+        foreach ($user->following as $user){
+            $posts[$i] = $user->posts;
+            $i++;
+        }
+        return response()->json($posts);
+    }
+
     public function like($post_id){
         $user = Auth::user();
         $post =  Post::find($post_id);
@@ -112,7 +138,6 @@ class UserController extends Controller
         }        
     }
 
-    //user dislike a post
     public function dislike($post_id){
         $user = Auth::user();
         $post =  Post::find($post_id);
@@ -124,7 +149,13 @@ class UserController extends Controller
         }        
     }
 
-    //checks if the user has already liked the post
+    /**
+     * checks if the user has already liked the post
+     *
+     * @param  integer $user_id
+     * @param  integer $post_id
+     * @return void|string
+     */
     public function checkLikes($user_id, $post_id){
         if($user_id != null){
             $user = User::find($user_id);
@@ -139,5 +170,16 @@ class UserController extends Controller
                 return response()->json(['Este post não existe.']);
             }       
         }                
+    }
+
+    //returns a list of posts of users being followed
+    public function listFollowingPosts(){
+        $user = Auth::user();
+        $i = 0;
+        foreach ($user->following as $user){
+            $posts[$i] = $user->posts;
+            $i++;
+        }
+        return response()->json($posts);
     }
 }

@@ -1,3 +1,39 @@
-ion-content {
-    -background: linear-gradient(#ffffffdc, #ff8c00a6);
+*{
+    --ion-background-color: white;
+    --ion-text-color: black;
+}
+
+ion-item{
+    padding-bottom:2% ;
+    padding-top:2% ;
+    --ion-item-background: white;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+}
+
+ion-toolbar{
+    --ion-toolbar-background: #FF8C00	;
+}
+
+ion-checkbox{
+    --border-radius: 100%;
+    --background-checked: #B22222;
+    --border-color: #B22222;
+    --border-color-checked: #B22222;
+    margin-right:2%;
+    
+}
+ion-button{
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-bottom:10% ;
+    margin-top:10% ;
+}
+
+p{
+    padding-left: 3%;
 }

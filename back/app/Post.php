@@ -10,12 +10,11 @@ use App\Http\Requests\PostRequest;
 
 class Post extends Model
 {
-    // Relationship 1 to N with user
+
     public function user(){
         return $this->belongsTo('App\User');
     }
 
-    // Relationship N to N - user likes post    
     public function like(){
         return $this->belongsToMany('App\User');
     }
