@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'first-page',
     pathMatch: 'full'
   },
   {
@@ -36,9 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./register2/register2.module').then( m => m.Register2PageModule)
   },
   {
-    path: 'create-post',
-    loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+    path: 'profile-edit',
+    loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
   }
+
 
 ];
 

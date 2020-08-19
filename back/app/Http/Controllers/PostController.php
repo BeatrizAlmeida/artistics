@@ -16,8 +16,11 @@ class PostController extends Controller
     }
 
     public function showPost ($id){
-        $post = Post::findOrFail($id);
-        return response()->json($post);
+        $post =  Post::find($id);
+        if($post){
+            return response()->json($post);
+        }
+        return response()->json(['Não foi possível encontrar o post.']);
     }
 
     public function listPost(){
@@ -26,24 +29,15 @@ class PostController extends Controller
     }
 
     public function updatePost(PostRequest $request, $id){
-        $post = Post::find($id);
-        if($post){
-            $post->updatePost($request);
-            return response()->json($post);
-        }
-        return response()->json(['Post não encontrado']);
-
+        $post->updatePost($request);
+        return response()->json($post);
     }
 
     public function deletePost($id){
-        if(Post::find($id)){
-            Post::destroy($id);
-            return response()->json(['Post deletado.']);
-        }
-        return response()->json(['Não foi possível encontrar o post.']);
+        Post::destroy($id);
+        return response()->json(['Post deletado.']);
     }
     
-    // returns the number of likes on the post
     public function numberLikes($id){
         $post =  Post::find($id);
         if($post){

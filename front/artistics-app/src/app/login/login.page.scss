@@ -1,20 +1,16 @@
 
-*{
-    --ion-background-color: white;
+ion-content {
+    --background: url('/assets/img/bg2.png') 0 0/100% 100% no-repeat;
 
 }
 
 ion-item{
     padding-bottom:2% ;
     padding-top:2% ;
-    --ion-item-background: white;
+    --ion-item-background: none;
     --ion-text-color: black;
     padding-left: 4%;
     padding-right: 4%;
-}
-
-ion-toolbar{
-    --ion-toolbar-background: #FF8C00	;
 }
 
 .ion-justify-content-center{
@@ -26,5 +22,5 @@ ion-toolbar{
     margin-right: auto;
     display:block;
     margin-bottom:10% ;
-    margin-top:10% ;
+    margin-top:20% ;
 }

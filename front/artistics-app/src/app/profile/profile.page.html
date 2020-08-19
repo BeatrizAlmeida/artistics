@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-grid>
+    <ion-col>
+      <ion-row class="topo">
+        <p>Imagem do User</p>
+        <p>{{loggedUser.name}}</p>
+        <ion-button fill='outline' shape='round' a routerLink="../profile-edit"><ion-icon name='create-outline' size='medium'></ion-icon>Editar Perfil</ion-button>
+        <ion-button shape='round'>Seguir</ion-button>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Seguindo</p>
+        </ion-col>
+        <ion-col>
+          <p>Seguidores</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p>Bio do User</p>
+      </ion-row>
+    </ion-col>
+  </ion-grid>
+
 </ion-content>
+
+<ion-footer color="warning" class="ion-no-border">
+  <ion-icon name='home-outline' size='large'></ion-icon>
+  <ion-icon name='globe-outline' size='large'></ion-icon>
+</ion-footer>

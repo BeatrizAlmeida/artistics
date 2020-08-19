@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2> Edite seu perfil </h2>
+  <div class="form-content">
+    <form [formGroup]="editUserForm" (ngSubmit)="submitForm(editUserForm)">
+      <img [src]="image" class="addFoto"/>
+      <ion-button (click)="takePicture()" ><ion-icon size="large" name="camera"></ion-icon>
+      </ion-button>
+      <p>Alterar Foto</p>
+
+      <ion-item>
+        <ion-label position="floating">Alterar Nome Completo</ion-label>
+        <ion-input placeholder = "{{loggedUser.name}}"type="text" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input placeholder = "{{loggedUser.phone}}" type="text" formControlName="phone" [brmasker]="{phone:true}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Biography</ion-label>
+        <ion-textarea placeholder = "{{loggedUser.biography}}" type="textarea" formControlName="biography"></ion-textarea>
+      </ion-item>
+      <!--CRIANDO BOTAO SUBMIT-->
+      <ion-row class='ion-justify-content-center'>
+        <ion-button  type="submit" color="danger" shape="round" [disabled]="editUserForm.invalid">Enviar</ion-button>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>

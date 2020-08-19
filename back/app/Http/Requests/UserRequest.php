@@ -40,13 +40,11 @@ class UserRequest extends FormRequest
         }
         if($this->isMethod('put')){
             return [
-                'name' =>'string',
-                'email' =>'email|unique:users,email',
-                'password' =>'confirmed',
+                'name' =>'string|nullable',
                 'phone' =>'celular_com_ddd|nullable',
-                'moderator' =>'boolean',
                 'biography' =>'nullable',
-                'image' =>'image|nullable',
+                'moderator' =>'boolean',
+                'image' =>'nullable|image',
             ];
         }
     }
@@ -66,12 +64,11 @@ class UserRequest extends FormRequest
     }
 
     /**
-     * 
      * If an error occurs, a JSON message will be sent informing the error
      *
+     * @param  mixed $validator
      * 
      */
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json($validator->errors(),
