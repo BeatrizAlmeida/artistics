@@ -12,6 +12,7 @@ import { AuthServiceService } from '../services/auth-service.service';
   templateUrl: './profile-edit.page.html',
   styleUrls: ['./profile-edit.page.scss'],
 })
+
 export class ProfileEditPage implements OnInit {
 
   editUserForm: FormGroup;
