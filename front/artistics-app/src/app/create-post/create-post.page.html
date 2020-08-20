@@ -16,15 +16,13 @@
         <ion-card-title>{{loggedUser.name}} :</ion-card-title>
       </ion-row> 
 
-      <ion-textarea formControlName="title" type="text"></ion-textarea>
+      <ion-label>Insira um título à sua Publicação</ion-label>
+
+      <ion-textarea formControlName="title" type="text" auto-grow='true'></ion-textarea>
 
       <ion-card-subtitle>
         <ion-grid>
           <ion-row>
-
-            <ion-button color='danger'>
-              <ion-icon name="musical-notes-outline"></ion-icon>
-            </ion-button>
 
             <ion-button color='danger' (click)="takePicture()">
               <ion-icon name="images-outline"></ion-icon>
@@ -35,11 +33,12 @@
       </ion-card-subtitle>
 
       <ion-card-subtitle>
+        <ion-label>Crie aqui seu poema, texto, divulgação:</ion-label>
         <ion-textarea auto-grow='true' formControlName="text" type="text">
         </ion-textarea>
       </ion-card-subtitle>
 
-      <ion-label>Selecione a categoria</ion-label>
+      <ion-label>Selecione a categoria da Postagem</ion-label>
 
       <ion-select formControlName="category">
         <ion-select-option value= 'Pintura'>Pintura</ion-select-option>
@@ -51,7 +50,7 @@
       <img [src]="photo" vertical="center" horizontal="center">
 
       <div>
-        <ion-button type="submit" color="danger" shape="round" >Create a Post</ion-button>
+        <ion-button type="submit" color="danger" shape="round" routerLink="home">Crie</ion-button>
       </div>
 
     </form>    
