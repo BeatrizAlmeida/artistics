@@ -23,5 +23,22 @@ ion-card{
 ion-textarea{
     padding-left:5%;
     padding-right:5%;
-    --background:orange;
+    border: solid 1px rgb(110, 82, 82);
+
+}
+
+ion-card-title{
+    --color: black;
+    padding-top: 3%;
+    padding-left: 3%;
+    font-weight: lighter;
+}
+
+ion-select{
+    background-color: black;
+}
+
+ion-label{
+    font-size: 1.2em;
+color:black;
 }

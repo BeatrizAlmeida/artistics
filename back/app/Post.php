@@ -19,23 +19,12 @@ class Post extends Model
         return $this->belongsToMany('App\User');
     }
 
-    public function createPost(PostRequest $request ){
+    public function createPost(Request $request ){
         $this->text = $request->text;
         $this->title = $request->title;
         $this->category = $request->category;
+        $this->image = $request ->image;
         $this->user_id = $request->user_id;
-
-        //makes a new folder if it doesen't exists then saves in database the path of the file
-        if( $request->image){
-            if (!Storage::exists('localPhotos/')){
-                Storage::makeDirectory('localPhotos/', 0775,true);
-            }
-            $file= $request->file('image');
-            $filename= rand().'.'.$file->getClientOriginalExtension();
-            $path=$file->storeAs('localPhotos', $filename);
-            Storage::setVisibility($path, 'public');
-            $this->image=$path;
-        }
 
         if( $request->audio){
             if (!Storage::exists('localAudios/')){

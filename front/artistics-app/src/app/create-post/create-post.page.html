@@ -11,36 +11,49 @@
 <ion-content>
   <ion-card>
 
-    <ion-row>  
-      <ion-card-title>Nome de Usuário</ion-card-title>
-      <p>Horário da Postagem</p>
-    </ion-row>
+    <form [formGroup]="createPostForm" (ngSubmit)="submitForm(createPostForm)">
+      <ion-row>  
+        <ion-card-title>{{loggedUser.name}} :</ion-card-title>
+      </ion-row> 
 
-    <ion-subtitle>
-      <ion-grid>
-        <ion-row>
+      <ion-textarea formControlName="title" type="text"></ion-textarea>
 
-          <ion-button color= 'danger'>
-            <ion-icon name="musical-notes-outline"></ion-icon>
-          </ion-button>
+      <ion-card-subtitle>
+        <ion-grid>
+          <ion-row>
 
-          <ion-button color= 'danger'>
-            <ion-icon name="images-outline"></ion-icon>
-          </ion-button>
-        
-        </ion-row>
-      </ion-grid>
-    </ion-subtitle>
+            <ion-button color='danger'>
+              <ion-icon name="musical-notes-outline"></ion-icon>
+            </ion-button>
 
-    
-    <ion-card-subtitle>
-      <ion-textarea auto-grow='true'>
-      </ion-textarea>
-    </ion-card-subtitle>
+            <ion-button color='danger' (click)="takePicture()">
+              <ion-icon name="images-outline"></ion-icon>
+            </ion-button>
+          
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
 
-    <div>
-      <ion-button type="submit" color="danger" shape="round">Create a Post</ion-button>
-    </div>
+      <ion-card-subtitle>
+        <ion-textarea auto-grow='true' formControlName="text" type="text">
+        </ion-textarea>
+      </ion-card-subtitle>
 
+      <ion-label>Selecione a categoria</ion-label>
+
+      <ion-select formControlName="category">
+        <ion-select-option value= 'Pintura'>Pintura</ion-select-option>
+        <ion-select-option value= 'Música'>Música</ion-select-option>
+        <ion-select-option value= 'Fotografia'>Fotografia</ion-select-option>
+        <ion-select-option value= 'Desenho'>Desenho</ion-select-option>
+      </ion-select>
+
+      <img [src]="photo" vertical="center" horizontal="center">
+
+      <div>
+        <ion-button type="submit" color="danger" shape="round" >Create a Post</ion-button>
+      </div>
+
+    </form>    
   </ion-card>
 </ion-content>

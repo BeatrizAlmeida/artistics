@@ -9,7 +9,7 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    public function createPost ( PostRequest $request ){
+    public function createPost ( Request $request ){
         $post = new Post;
         $post->createPost($request);
         return response()->json($post);
