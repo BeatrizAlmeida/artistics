@@ -83,18 +83,20 @@ class UserController extends Controller
         return response()->json(['Não foi possível encontrar o usuário.']);
     }
 
-    public function follow($user_id, $follower_id){
-        if($user_id == $follower_id){
+    public function follow($user_id){
+        $follower = Auth::user();
+        if($follower->id == $user_id){
             return response()->json(['Usuário não pode seguir a si mesmo.']);
         }
         $user = User::findOrFail($user_id);
-        $user->followers()->attach($follower_id);
+        $user->followers()->attach($follower->id);
         return response()->json($user);
     }
 
-    public function unfollow($user_id, $follower_id){
-        $user = User::findOrFail($user_id);
-        $user->followers()->detach($follower_id);
+    public function unfollow($followed_id){
+        $user = Auth::user();
+        //$user = User::findOrFail($user_id);
+        $user->following()->detach($followed_id);
         return response()->json($user);
     }
 
@@ -172,14 +174,24 @@ class UserController extends Controller
         }                
     }
 
-    //returns a list of posts of users being followed
-    public function listFollowingPosts(){
-        $user = Auth::user();
-        $i = 0;
-        foreach ($user->following as $user){
-            $posts[$i] = $user->posts;
-            $i++;
-        }
-        return response()->json($posts);
+    
+    /**
+     * checks if the user has already followed the other user
+     *
+     * @param  integer $user_id
+     * @return bool
+     */
+    public function checkFollowing($following_id){
+        if($following_id != null){
+            $following =  User::find($following_id);
+            $user_id = Auth::user()->id;
+            if($following->followers->contains($user_id)){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }                
     }
+
 }

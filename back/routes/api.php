@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //CRUD USER
 Route::get('showUser/{id}','UserController@showUser');
-Route::get('listUser','UserController@listUser');
+Route::get('listUser','UserController@listUser')->middleware('auth:api');;
 Route::post('createUser','UserController@createUser');
 Route::put('updateUser','UserController@updateUser')->middleware('auth:api');
 Route::delete('deleteUser/{id}','UserController@deleteUser');
@@ -36,13 +36,14 @@ Route::put('restoreUser/{id}','UserController@restoreUser');
 Route::delete('forceDelete/{id}','UserController@forceDelete');
 
 //user follow 
-Route::get('listFollowingPosts','UserController@listFollowingPosts')->middleware('auth:api');
 Route::get('numberFollowers/{id}','UserController@numberFollowers');
 Route::get('numberFollowing/{id}','UserController@numberFollowing');
-Route::get('listFollowingPosts','UserController@listFollowingPosts')->middleware('auth:api');
-Route::put('follow/{id}/{follower_id}','UserController@follow');
-Route::delete('unfollow/{id}/{follower_id}','UserController@unfollow');
-
+Route::group(['middleware'=>'auth:api'], function(){
+    Route::get('listFollowingPosts','UserController@listFollowingPosts');
+    Route::get('checkFollowing/{id}','UserController@checkFollowing');
+    Route::get('follow/{id}','UserController@follow');
+    Route::delete('unfollow/{id}','UserController@unfollow');
+}); 
 
 //user likes or dislikes post
 Route::group(['middleware'=>'auth:api'], function(){

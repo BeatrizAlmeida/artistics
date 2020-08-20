@@ -35,7 +35,6 @@ class UserRequest extends FormRequest
                 'phone' =>'celular_com_ddd|nullable',
                 'moderator' =>'required|boolean',
                 'biography' =>'nullable',
-                'image' =>'image|nullable',
             ];
         }
         if($this->isMethod('put')){
@@ -44,7 +43,6 @@ class UserRequest extends FormRequest
                 'phone' =>'celular_com_ddd|nullable',
                 'biography' =>'nullable',
                 'moderator' =>'boolean',
-                'image' =>'nullable|image',
             ];
         }
     }
@@ -59,7 +57,6 @@ class UserRequest extends FormRequest
             'passowrd.confirmed'=>'As senhas inseridas não são compatíveis. Por favor, preencha novamente.',
             'moderator.boolean'=>'Moderador deve ter valor 0, para false, ou 1 para true. ',
             'phone.celular'=>'Este não é um formato válido de número celular. Formato válido: 99999-9999 ou 9999-9999',
-            'image.image'=>'Neste campo deve ser enviado uma imagem.',
         ];
     }
 
