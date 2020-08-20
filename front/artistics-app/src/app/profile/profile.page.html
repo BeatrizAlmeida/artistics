@@ -11,22 +11,26 @@
   <ion-grid>
     <ion-col>
       <ion-row class="topo">
-        <h3 class='name'>{{loggedUser.name}}</h3>
+        <img src="{{user.image}}">
+        <h3 class='name'>{{user.name}}</h3>
 
-        <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
-        <ion-button shape='round' color='warning' size='small'>SEGUIR</ion-button>
+        <!-- <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button> -->
+        <ion-button shape='round' color='warning' size='small' (click)="follow(user)" *ngIf = '!check'>SEGUIR</ion-button>
+        <ion-button shape='round' color='warning' size='small' (click)="unfollow(user)" *ngIf = 'check'>Deixar de Seguir</ion-button>
 
       </ion-row>
       <ion-row>
         <ion-col>
           <p>Seguindo</p>
+          {{following}}
         </ion-col>
         <ion-col>
           <p>Seguidores</p>
+          {{followers}}
         </ion-col>
       </ion-row>
       <ion-row>
-        <p>Bio do User</p>
+        <p>{{user.biography}}</p>
       </ion-row>
     </ion-col>
   </ion-grid>

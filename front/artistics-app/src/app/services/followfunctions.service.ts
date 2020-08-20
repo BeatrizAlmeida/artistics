@@ -18,21 +18,28 @@ export class FollowfunctionsService {
 
   constructor(public http: HttpClient) { }
 
-  /*followUser( id, follower_id ): Observable<any> {
-    return this.http.put( this.apiURL + 'follow', id, follower_id);
+  follow( id ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.get( this.apiURL + 'follow/' + id , this.httpHeaders );
   }
 
-  unfollowUser( id, follower_id ): Observable<any> {
-    return this.http.put( this.apiURL + 'unfollow', id, follower_id);
+  unfollow( id ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.delete( this.apiURL + 'unfollow/' + id , this.httpHeaders);
   }
 
   numberFollowers( id ): Observable<any> {
-    return this.http.put( this.apiURL + 'numberFollowers', id, this.httpHeaders);
+    return this.http.get( this.apiURL + 'numberFollowers/' + id);
   }
 
   numberFollowing( id ): Observable<any> {
-    return this.http.put( this.apiURL + 'numberFollowing', id, this.httpHeaders);
-  }*/
+    return this.http.get( this.apiURL + 'numberFollowing/' +  id);
+  }
+
+  checkFollowing( id ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.get( this.apiURL + 'checkFollowing/' +  id , this.httpHeaders);
+  }
 
   listPost(): Observable<any> {
     return this.http.get( this.apiURL + 'listPost', this.httpHeaders);
