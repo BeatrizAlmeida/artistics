@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot='start'>
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
@@ -8,15 +8,14 @@
 
 <ion-content>
 
-  <ion-card (click)='clickPost(post)' *ngFor='let post of postsArray'>
-    <ion-card-title>{{post.title}}</ion-card-title>
-    <ion-chip>{{post.category}}</ion-chip>
-    <img [src] = post.image >
-    <ion-text><h6>{{post.text}}</h6></ion-text>
+  <ion-card color='medium'>
+    <ion-card-title>{{infosPost.title}}</ion-card-title>
+    <ion-card-subtitle>Made By {{infosUser.name}}</ion-card-subtitle>
+    <ion-chip color='light'>{{infosPost.category}}</ion-chip>
+    <img [src] = infosPost.image >
+    <p>{{infosPost.text}}</p>
   </ion-card>
 
-  <app-post-card [p_arrays]="arrays"></app-post-card>
-  
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color='warning'>
       <ion-icon name="chevron-back-outline"></ion-icon>

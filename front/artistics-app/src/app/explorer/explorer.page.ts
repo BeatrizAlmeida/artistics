@@ -1,20 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FollowfunctionsService } from '../services/followfunctions.service';
+import { Router } from '@angular/router';
 import { CreatePostService } from '../services/create-post.service';
 
-import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-explorer',
+  templateUrl: './explorer.page.html',
+  styleUrls: ['./explorer.page.scss'],
 })
-export class HomePage implements OnInit {
+export class ExplorerPage implements OnInit {
+
+  public postsArray = [];
 
   constructor( public postService: CreatePostService,
               public router: Router,) { }
 
-  public postsArray = [];
+  ngOnInit() {
+    this.postList();
+  }
 
   postList() {
     this.postService.listPost().subscribe((res) => {
@@ -30,10 +33,5 @@ export class HomePage implements OnInit {
     console.log(post.user_id)
     this.router.navigate(['/open-post'])
   }
-
-  ngOnInit() {
-    this.postList();
-  }
-
 
 }

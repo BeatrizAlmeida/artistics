@@ -13,11 +13,18 @@
   <div class="form-content">
     <h3>Cadastre-se agora</h3>
     <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
-      <img [src]="photo" class="addFoto"/>
-      <ion-button (click)="takePicture()" ><ion-icon size="large" name="camera"></ion-icon>
-      </ion-button>
 
-      <p>Adicionar Foto</p>
+      <div class='photo-content'>
+        <img [src]="photo" 
+        vertical='center'
+        horizontal='center'
+        class="addFoto"/>
+
+        <ion-button (click)="takePicture()" color='warning'><ion-icon size="medium" name="camera"></ion-icon>
+        </ion-button>
+
+        <p>Adicionar Foto</p>
+      </div>
     
 
       <!--NOME COMPLETO-->
@@ -37,8 +44,15 @@
       <!--TELEFONE-->
 
       <ion-item>
-        <ion-label position="floating">Telefone</ion-label>
+        <ion-label position="floating">Telefone (opcional)</ion-label>
         <ion-input type="text" formControlName="phone" [brmasker]="{phone:true}"></ion-input>
+      </ion-item>
+
+      <!--BIO-->
+
+      <ion-item>
+        <ion-label position="floating">Sobre você (opcional)</ion-label>
+        <ion-textarea formControlName="biography"></ion-textarea>
       </ion-item>
 
       <!--SENHA-->
@@ -63,7 +77,7 @@
     
     <!--CRIANDO BOTAO SUBMIT-->
     <ion-row class='ion-justify-content-center'>
-      <ion-button fill="outline" type="submit" color="light" shape="round" [disabled]="registerForm.invalid">Próximo passo</ion-button>
+      <ion-button type="submit" color="warning" shape="round" [disabled]="registerForm.invalid">FINALIZAR CADASTRO</ion-button>
     </ion-row>
     </form>
   </div>

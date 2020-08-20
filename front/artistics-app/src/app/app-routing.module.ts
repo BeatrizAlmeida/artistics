@@ -48,9 +48,18 @@ const routes: Routes = [
     loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule)
   },
   {
-    path: 'create-post',
+    path: 'explorer',
+    loadChildren: () => import('./explorer/explorer.module').then( m => m.ExplorerPageModule)
+  },
+  {
+  path: 'create-post',
     loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+  },
+  {
+    path: 'open-post',
+    loadChildren: () => import('./open-post/open-post.module').then( m => m.OpenPostPageModule)
   }
+
 
 
 ];

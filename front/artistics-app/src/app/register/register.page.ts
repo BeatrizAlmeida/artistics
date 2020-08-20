@@ -29,6 +29,7 @@ export class RegisterPage implements OnInit {
       name: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       phone: [null, [Validators.minLength(14), Validators.maxLength(15)]],
+      biography: [null],
       password: [null, [Validators.required, Validators.minLength(8),Validators.maxLength(15)]],
       password_confirmation: [null, [Validators.required]]
     }, {validator: this.matchingPasswords('password', 'password_confirmation')});
@@ -96,7 +97,7 @@ export class RegisterPage implements OnInit {
         console.log(res);
         this.confirmToast();
         localStorage.setItem('userToken', res.Success.token);
-        this.router.navigate(['/home'])
+        this.router.navigate(['/login'])
       },
       (err) => {
         console.log(err);
