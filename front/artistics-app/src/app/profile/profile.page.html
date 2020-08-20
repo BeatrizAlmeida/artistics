@@ -13,20 +13,24 @@
       <ion-row class="topo">
         <h3 class='name'>{{loggedUser.name}}</h3>
 
-        <ion-button fill='outline' shape='round' color='warning' size='small'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
+        <ion-button fill='outline' shape='round' color='warning' size='small' a routerLink = '/profile-edit'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
+
         <ion-button shape='round' color='warning' size='small'>SEGUIR</ion-button>
 
       </ion-row>
       <ion-row>
         <ion-col>
-          <p>Seguindo</p>
+          <h5>Seguindo</h5>
         </ion-col>
         <ion-col>
-          <p>Seguidores</p>
+          <h5>Seguidores</h5>
         </ion-col>
       </ion-row>
       <ion-row>
-        <p>Bio do User</p>
+        <h5>Bio</h5>
+      </ion-row>
+      <ion-row>  
+        <p>{{loggedUser.biography}}</p>
       </ion-row>
     </ion-col>
   </ion-grid>
@@ -37,8 +41,8 @@
     </ion-fab-button>
     <ion-fab-list side="start">
       <ion-fab-button><ion-icon name="globe"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="home"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="create"></ion-icon></ion-fab-button>
+      <ion-fab-button a routerLink = '/home'><ion-icon name="home"></ion-icon></ion-fab-button>
+      <ion-fab-button a routerLink = '/create-post'><ion-icon name="create"></ion-icon></ion-fab-button>
     </ion-fab-list>
   </ion-fab>
 
