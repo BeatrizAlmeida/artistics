@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'profile-edit',
     loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+  },  {
+    path: 'explorer',
+    loadChildren: () => import('./explorer/explorer.module').then( m => m.ExplorerPageModule)
   }
+
 
 
 ];
