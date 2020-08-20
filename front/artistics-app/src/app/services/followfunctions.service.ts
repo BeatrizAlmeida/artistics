@@ -34,8 +34,8 @@ export class FollowfunctionsService {
     return this.http.put( this.apiURL + 'numberFollowing', id, this.httpHeaders);
   }*/
 
-  listPost(): Observable<any> {
-    return this.http.get( this.apiURL + 'listPost', this.httpHeaders);
+  listFollowingPost(): Observable<any> {
+    return this.http.put( this.apiURL + 'listFollowPost', this.httpHeaders)
   }
 
 }

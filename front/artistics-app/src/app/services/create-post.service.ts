@@ -22,5 +22,12 @@ export class CreatePostService {
     return this.http.post( this.apiURL + 'createPost', form, this.httpHeaders);
   }
 
+  showPost( id ): Observable<any> {
+    return this.http.get( this.apiURL + 'showPost/'+ id, this.httpHeaders);
+  }
+
+  listPost(): Observable<any> {
+    return this.http.get( this.apiURL + 'listPost', this.httpHeaders);
+  }
 
 }

@@ -11,6 +11,7 @@
   <ion-grid>
     <ion-col>
       <ion-row class="topo">
+        <img [src] = loggedUser.image class='photo'>
         <h3 class='name'>{{loggedUser.name}}</h3>
 
         <ion-button fill='outline' shape='round' color='warning' size='small' a routerLink = '/profile-edit'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>

@@ -8,7 +8,7 @@
 
 <ion-content>
 
-  <ion-card *ngFor='let post of postsArray'>
+  <ion-card (click)='clickPost(post)' *ngFor='let post of postsArray'>
     <ion-card-title>{{post.title}}</ion-card-title>
     <ion-chip>{{post.category}}</ion-chip>
     <img [src] = post.image >

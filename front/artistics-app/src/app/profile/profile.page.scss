@@ -8,6 +8,12 @@ ion-content {
     align-items: center;
 }
 
+.photo {
+    border-radius: 50%;
+    border-color: grey;
+    width: 50%;
+}
+
 ion-footer {
     display: flex;
     width: 100%;

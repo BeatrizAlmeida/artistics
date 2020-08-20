@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FollowfunctionsService } from '../services/followfunctions.service';
+import { Router } from '@angular/router';
+import { CreatePostService } from '../services/create-post.service';
 
 @Component({
   selector: 'app-explorer',
@@ -9,31 +11,27 @@ import { FollowfunctionsService } from '../services/followfunctions.service';
 export class ExplorerPage implements OnInit {
 
   public postsArray = [];
-  public usersId = [];
-  public usersArray = [];
-  public id: number;
 
-  constructor( public followService: FollowfunctionsService) { }
+  constructor( public postService: CreatePostService,
+              public router: Router,) { }
 
   ngOnInit() {
     this.postList();
   }
 
   postList() {
-    this.followService.listPost().subscribe((res) => {
+    this.postService.listPost().subscribe((res) => {
       this.postsArray = res[0];
       console.log(this.postsArray);
     });
   }
 
-  /*user( ) {
-
-    this.id = this.usersId[0];
-    this.followService.showUser(this.id).subscribe((res) => {
-      this.usersArray = res[0];
-      console.log(this.usersArray);
-    });
-
-  }*/
+  clickPost(post) {
+    localStorage.setItem('id',JSON.stringify(post.id));
+    localStorage.setItem('user_id',JSON.stringify(post.user_id));
+    console.log(post.id)
+    console.log(post.user_id)
+    this.router.navigate(['/open-post'])
+  }
 
 }

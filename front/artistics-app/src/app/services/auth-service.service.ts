@@ -40,4 +40,9 @@ export class AuthServiceService {
     this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
     return this.http.put( this.apiURL + 'updateUser', form,  this.httpHeaders);
   }
+
+  showUser(id): Observable<any> {
+    this.httpHeaders.headers['Access-Control-Allow-Origin']="*";
+    return this.http.get( this.apiURL + 'showUser/' + id, this.httpHeaders);
+  }
 }

@@ -46,6 +46,10 @@ const routes: Routes = [
   {
   path: 'create-post',
     loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+  },
+  {
+    path: 'open-post',
+    loadChildren: () => import('./open-post/open-post.module').then( m => m.OpenPostPageModule)
   }
 
 
