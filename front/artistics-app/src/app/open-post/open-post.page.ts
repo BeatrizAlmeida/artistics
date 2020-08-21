@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 import { CreatePostService } from '../services/create-post.service';
 
 import { AuthServiceService } from '../services/auth-service.service';
@@ -17,12 +19,14 @@ export class OpenPostPage implements OnInit {
   public infosUser = [];
   public comments = [];
   public isLogged: boolean;
+  public isModerator: boolean;
   public check: boolean;
   public likes: number;
   public id:number = JSON.parse(localStorage.getItem('id'));
   public user:number = JSON.parse(localStorage.getItem('user_id'));
 
   constructor( public postService: CreatePostService,
+                public router: Router,
                 public authService: AuthServiceService) { }
 
   ngOnInit() {
@@ -72,6 +76,7 @@ export class OpenPostPage implements OnInit {
       console.log(this.loggedUserId);
       this.functionIsLogged();
       this.checkLikes(this.loggedUserId, this.id); 
+      this.moderator(this.loggedUserId);
     });
   }
 
@@ -116,4 +121,30 @@ export class OpenPostPage implements OnInit {
       this.likes = res;
     });
   }
+
+  moderator(id){
+    this.authService.showUser(id).subscribe((res) => {
+      console.log(res);
+      if(res.moderator == '1'){
+        this.isModerator = true;
+      }else{
+        this.isModerator = false;
+      }
+    });
+  }
+
+  deletePost(id){
+    this.postService.deletePost(id).subscribe((res) => {
+      console.log(res);
+      window.location.reload(true);
+    });
+  }
+
+  deleteComment(id){
+    this.postService.deleteComment(id).subscribe((res) => {
+      console.log(res);
+      window.location.reload(true);
+    });
+  }
+  
 }

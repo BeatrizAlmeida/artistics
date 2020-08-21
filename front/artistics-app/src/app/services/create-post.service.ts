@@ -56,4 +56,14 @@ export class CreatePostService {
   numberLikes( id ): Observable<any> {
     return this.http.get( this.apiURL + 'numberLikes/'+ id, this.httpHeaders);
   }
+
+  deletePost( id ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.delete( this.apiURL + 'deletePost/' + id, this.httpHeaders);
+  }
+
+  deleteComment( id ): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.delete( this.apiURL + 'deleteComment/' + id, this.httpHeaders);
+  }
 }
