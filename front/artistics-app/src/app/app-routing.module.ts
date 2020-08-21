@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './guards/Auth/auth.guard'
+
 const routes: Routes = [
   {
     path: '',
@@ -13,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
@@ -37,7 +40,8 @@ const routes: Routes = [
   },
   {
     path: 'profile-edit',
-    loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule)
+    loadChildren: () => import('./profile-edit/profile-edit.module').then( m => m.ProfileEditPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'list-users',
@@ -45,24 +49,33 @@ const routes: Routes = [
   },
   {
     path: 'my-profile',
-    loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule)
+    loadChildren: () => import('./my-profile/my-profile.module').then( m => m.MyProfilePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'explorer',
     loadChildren: () => import('./explorer/explorer.module').then( m => m.ExplorerPageModule)
   },
   {
+    path: 'logout',
+      loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule),
+      canActivate: [AuthGuard]
+    },
+  {
   path: 'create-post',
-    loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule)
+    loadChildren: () => import('./create-post/create-post.module').then( m => m.CreatePostPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'open-post',
     loadChildren: () => import('./open-post/open-post.module').then( m => m.OpenPostPageModule)
-  },  {
+  },
+  {
     path: 'comments',
-    loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
-  }
-
+    loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule),
+    canActivate: [AuthGuard]
+  },
+  
 
 
 
