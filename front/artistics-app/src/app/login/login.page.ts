@@ -40,7 +40,7 @@ export class LoginPage implements OnInit {
   async errorToast() {
     const toast = await this.toastController.create({
       position: 'top',
-      message: 'Email ou senha inválidos!',
+      message: 'Erro ao tentar logar!',
       duration: 3000
     });
     toast.present();
@@ -61,9 +61,14 @@ export class LoginPage implements OnInit {
     this.authService.login(form.value).subscribe(
       (res) => {
         console.log(res);
-        this.confirmToast();
-        localStorage.setItem('userToken', res.Success.token) 
-        this.router.navigate(['/home'])
+        localStorage.setItem('userToken', res.Success.token)
+        if (res.Success) {
+          this.confirmToast(); 
+          this.router.navigate(['/home'])
+        }
+        else {
+          this.errorToast();
+        }
       },
       (err) => {
         console.log(err);

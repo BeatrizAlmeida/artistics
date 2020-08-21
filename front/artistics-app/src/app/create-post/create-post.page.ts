@@ -75,6 +75,7 @@ export class CreatePostPage implements OnInit {
     this.createPostService.createPost(form.value).subscribe((res) => {
       console.log('post criado');
       form.reset();
+      this.router.navigate(['/home']);
     } );
   }
 

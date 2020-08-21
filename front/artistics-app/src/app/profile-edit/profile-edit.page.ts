@@ -89,7 +89,7 @@ export class ProfileEditPage implements OnInit {
       (res) => {
         console.log(res);
         this.confirmToast();
-        this.router.navigate(['/profile'])
+        this.router.navigate(['/my-profile'])
       },
       (err) => {
         console.log(err);

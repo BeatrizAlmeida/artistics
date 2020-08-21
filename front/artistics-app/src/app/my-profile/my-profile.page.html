@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>my-profile</ion-title>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-grid>
+    <ion-col>
+      <ion-row class="topo">
+        <img [src]= loggedUser.image class='photo'>
+        <h3 class='name'>{{loggedUser.name}}</h3>
+
+        <ion-button fill='outline' shape='round' color='warning' size='small' a routerLink = '/profile-edit'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
+        <!--<ion-button shape='round' color='warning' size='small' (click)="follow(user)" *ngIf = '!check'>SEGUIR</ion-button>
+        <ion-button shape='round' color='warning' size='small' (click)="unfollow(user)" *ngIf = 'check'>DEIXAR DE SEGUIR</ion-button>-->
+
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Seguindo</p>
+          {{following}}
+        </ion-col>
+        <ion-col>
+          <p>Seguidores</p>
+          {{followers}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p>{{loggedUser.biography}}</p>
+      </ion-row>
+    </ion-col>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color='warning'>
+      <ion-icon name="chevron-back-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button a routerLink = '/explorer'><ion-icon name="globe"></ion-icon></ion-fab-button>
+      <ion-fab-button a routerLink = '/home'><ion-icon name="home"></ion-icon></ion-fab-button>
+      <ion-fab-button a routerLink = '/create-post'><ion-icon name="create"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-content>

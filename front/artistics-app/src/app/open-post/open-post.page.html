@@ -10,11 +10,13 @@
 
   <ion-card color='medium'>
     <ion-card-title>{{infosPost.title}}</ion-card-title>
-    <ion-card-subtitle>Made By {{infosUser.name}}</ion-card-subtitle>
-    <ion-chip color='light'>{{infosPost.category}}</ion-chip>
+    <ion-card-subtitle>Feito por {{infosUser.name}}</ion-card-subtitle>
+    <ion-chip color='dark'>{{infosPost.category}}</ion-chip>
     <img [src] = infosPost.image >
     <p>{{infosPost.text}}</p>
   </ion-card>
+
+  <ion-button color='warning' a routerLink = '/comments'><ion-icon name = 'chatbubbles'></ion-icon>COMENTAR</ion-button>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color='warning'>

@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
   public postsArray = [];
 
   postList() {
-    this.postService.listPost().subscribe((res) => {
+    this.postService.listFollowingPost().subscribe((res) => {
       this.postsArray = res[0];
       console.log(this.postsArray);
     });
