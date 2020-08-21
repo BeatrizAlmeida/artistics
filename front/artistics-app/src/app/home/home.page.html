@@ -8,14 +8,14 @@
 
 <ion-content>
 
+  <ion-button color='warning' fill='outline' a routerLink='/list-users'>Veja quem está no Artistics</ion-button>
+
   <ion-card (click)='clickPost(post)' *ngFor='let post of postsArray'>
     <ion-card-title>{{post.title}}</ion-card-title>
     <ion-chip>{{post.category}}</ion-chip>
     <img [src] = post.image >
     <ion-text><h6>{{post.text}}</h6></ion-text>
   </ion-card>
-
-  <app-post-card [p_arrays]="arrays"></app-post-card>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color='warning'>

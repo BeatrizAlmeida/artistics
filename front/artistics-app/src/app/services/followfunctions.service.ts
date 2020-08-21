@@ -41,6 +41,4 @@ export class FollowfunctionsService {
     return this.http.get( this.apiURL + 'checkFollowing/' +  id , this.httpHeaders);
   }
 
- 
-
 }

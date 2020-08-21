@@ -13,7 +13,7 @@
 
     <form [formGroup]="createPostForm" (ngSubmit)="submitForm(createPostForm)">
       <ion-row>  
-        <ion-card-title>{{loggedUser.name}} :</ion-card-title>
+        <ion-card-title>Olá, {{loggedUser.name}}!</ion-card-title>
       </ion-row> 
 
       <ion-label>Insira um título à sua Publicação</ion-label>
@@ -24,7 +24,7 @@
         <ion-grid>
           <ion-row>
 
-            <ion-button color='danger' (click)="takePicture()">
+            <ion-button color='warning' (click)="takePicture()">
               <ion-icon name="images-outline"></ion-icon>
             </ion-button>
           

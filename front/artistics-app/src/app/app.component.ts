@@ -18,20 +18,14 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
-      title: 'My Profile',
-      url: '/profile',
+      title: 'Meu Perfil',
+      url: '/my-profile',
       icon: 'person'
     },
-
     {
-      title: 'Outbox',
-      url: '/first-page',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: '/register',
-      icon: 'heart'
+      title: 'Criar Post',
+      url: '/create-post',
+      icon: 'create'
     },
     {
       title: 'Sair',
