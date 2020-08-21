@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot='start'>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="CommentsForm" (ngSubmit)="submitForm(CommentsForm)">
+    <ion-card>
+      
+      <ion-label>Digite aqui seu comentário:</ion-label>
+
+      <ion-textarea formControlName="text" type="text" auto-grow='true'></ion-textarea>
+
+      <ion-button type="submit" color="danger" shape="round" routerLink="/explorer">Postar Comentário</ion-button>    
+
+    </ion-card>
+  </form> 
+</ion-content>

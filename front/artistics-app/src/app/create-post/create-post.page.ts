@@ -73,7 +73,7 @@ export class CreatePostPage implements OnInit {
     }
     console.log(form.value);
     this.createPostService.createPost(form.value).subscribe((res) => {
-      console.log('post criado');
+      console.log('Post Criado');
       form.reset();
     } );
   }
