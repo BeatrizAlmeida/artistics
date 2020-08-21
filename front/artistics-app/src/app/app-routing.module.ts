@@ -58,7 +58,11 @@ const routes: Routes = [
   {
     path: 'open-post',
     loadChildren: () => import('./open-post/open-post.module').then( m => m.OpenPostPageModule)
+  },  {
+    path: 'comments',
+    loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
   }
+
 
 
 
