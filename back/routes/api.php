@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //CRUD USER
 Route::get('showUser/{id}','UserController@showUser');
-Route::get('listUser','UserController@listUser')->middleware('auth:api');;
+Route::get('listUser','UserController@listUser')->middleware('auth:api');
 Route::post('createUser','UserController@createUser');
 Route::put('updateUser','UserController@updateUser')->middleware('auth:api');
 Route::delete('deleteUser/{id}','UserController@deleteUser');

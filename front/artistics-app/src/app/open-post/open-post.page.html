@@ -15,7 +15,10 @@
     <img [src] = infosPost.image >
     <p>{{infosPost.text}}</p>
   </ion-card>
-
+  <h3>{{likes}} Curtidas</h3>
+  <ion-button color='warning' *ngIf= "functionIsLogged && !check" (click)="like(infosPost.id)" fill = 'outline'><ion-icon name = 'thumbs-up'></ion-icon>CURTIR</ion-button>
+  <ion-button color='warning' *ngIf= "functionIsLogged && check" (click)="dislike(infosPost.id)"><ion-icon name = 'thumbs-up'></ion-icon>DESCURTIR</ion-button>
+  <ion-title  *ngIf= "!functionIsLogged"> Cadastre-se para interagir com o post</ion-title>
   <ion-list>
     <ion-item *ngFor ='let comment of comments' >
       <ion-avatar slot="start">
