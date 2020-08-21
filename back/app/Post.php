@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
-
+use App\Comment;
 
 class Post extends Model
 {
@@ -17,6 +17,10 @@ class Post extends Model
 
     public function like(){
         return $this->belongsToMany('App\User');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Comment');
     }
 
     public function createPost(Request $request ){

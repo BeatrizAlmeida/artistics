@@ -30,4 +30,12 @@ export class CreatePostService {
     return this.http.get( this.apiURL + 'listPost', this.httpHeaders);
   }
 
+  listFollowingPost(): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.get( this.apiURL + 'listFollowingPosts', this.httpHeaders);
+  }
+
+  commentInPost( id ): Observable<any> {
+    return this.http.get( this.apiURL + 'commentInPost/'+ id, this.httpHeaders);
+  }
 }

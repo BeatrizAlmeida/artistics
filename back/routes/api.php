@@ -77,6 +77,8 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::put('updateComment/{id}','CommentController@updateComment')->middleware('comment.owner');
     Route::delete('deleteComment/{id}','CommentController@deleteComment')->middleware('moderatorOrOwner.comment');
 });
+//comment from post
+Route::get('commentInPost/{post_id}','CommentController@commentInPost');
 
 
 //PASSPORT
