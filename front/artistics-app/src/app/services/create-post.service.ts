@@ -38,4 +38,22 @@ export class CreatePostService {
   commentInPost( id ): Observable<any> {
     return this.http.get( this.apiURL + 'commentInPost/'+ id, this.httpHeaders);
   }
+
+  checkLikes( id, post_id ): Observable<any> {
+    return this.http.get( this.apiURL + 'checkLikes/'+ id + '/' + post_id, this.httpHeaders);
+  } 
+
+  like(post_id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.put( this.apiURL + 'like/' + post_id, null, this.httpHeaders);
+  }
+
+  dislike(post_id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken')
+    return this.http.delete( this.apiURL + 'dislike/' + post_id, this.httpHeaders);
+  }
+
+  numberLikes( id ): Observable<any> {
+    return this.http.get( this.apiURL + 'numberLikes/'+ id, this.httpHeaders);
+  }
 }

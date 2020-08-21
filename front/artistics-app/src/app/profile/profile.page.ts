@@ -24,7 +24,6 @@ export class ProfilePage implements OnInit {
   public followers: number;
   public following: number;
   public check: boolean;
-//public checkUser: boolean; para aparecer ou não o edit profile
 
   ngOnInit() {
     this.showUser(this.user_id);
