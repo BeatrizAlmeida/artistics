@@ -79,6 +79,7 @@ export class OpenPostPage implements OnInit {
     this.postService.like(id).subscribe((res) => {
       console.log(res);
       this.check = true;
+      this.likes++;
     });
   }
 
@@ -86,6 +87,7 @@ export class OpenPostPage implements OnInit {
     this.postService.dislike(id).subscribe((res) => {
       console.log(res);
       this.check = false;
+      this.likes--;
     });
   }
 
