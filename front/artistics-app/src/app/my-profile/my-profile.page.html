@@ -11,13 +11,11 @@
   <ion-grid>
     <ion-col>
       <ion-row class="topo">
-        <img [src]= loggedUser.image class='photo'>
+        <img src= {{loggedUser.image}} class='photo'>
         <h3 class='name'>{{loggedUser.name}}</h3>
 
         <ion-button fill='outline' shape='round' color='warning' size='small' a routerLink = '/profile-edit'><ion-icon name='create' size='small'></ion-icon>EDITAR PERFIL</ion-button>
-        <!--<ion-button shape='round' color='warning' size='small' (click)="follow(user)" *ngIf = '!check'>SEGUIR</ion-button>
-        <ion-button shape='round' color='warning' size='small' (click)="unfollow(user)" *ngIf = 'check'>DEIXAR DE SEGUIR</ion-button>-->
-
+        
       </ion-row>
       <ion-row>
         <ion-col>

@@ -97,7 +97,7 @@ export class RegisterPage implements OnInit {
         console.log(res);
         this.confirmToast();
         localStorage.setItem('userToken', res.Success.token);
-        this.router.navigate(['/login'])
+        this.router.navigate(['/explorer'])
       },
       (err) => {
         console.log(err);

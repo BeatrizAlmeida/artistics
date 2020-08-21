@@ -11,9 +11,14 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export class OpenPostPage implements OnInit {
 
+  public loggedUser = [];
+  public loggedUserId: number;
   public infosPost = [];
   public infosUser = [];
   public comments = [];
+  public isLogged: boolean;
+  public check: boolean;
+  public likes: number;
   public id:number = JSON.parse(localStorage.getItem('id'));
   public user:number = JSON.parse(localStorage.getItem('user_id'));
 
@@ -24,6 +29,8 @@ export class OpenPostPage implements OnInit {
     this.showPost(this.id);
     this.showUser(this.user);
     this.commentInPost(this.id);
+    this.getLoggedUser();
+    this.numberLikes(this.id);
   }
 
   showPost (id) {
@@ -55,5 +62,56 @@ export class OpenPostPage implements OnInit {
         this.comments[i].image = res.image;
       });
     }
+  }
+
+  public getLoggedUser() {
+    this.authService.profile().subscribe((res) => {
+      console.log(res);
+      this.loggedUser = res.Success;
+      this.loggedUserId = res.Success.id;
+      console.log(this.loggedUserId);
+      this.functionIsLogged();
+      this.checkLikes(this.loggedUserId, this.id); 
+    });
+  }
+
+  like(id) {
+    this.postService.like(id).subscribe((res) => {
+      console.log(res);
+      this.check = true;
+    });
+  }
+
+  dislike(id) {
+    this.postService.dislike(id).subscribe((res) => {
+      console.log(res);
+      this.check = false;
+    });
+  }
+
+  functionIsLogged(){
+    if (this.loggedUserId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  checkLikes(id, post_id) {
+    this.postService.checkLikes(id, post_id).subscribe((res) => {
+      console.log(res);
+      if(res){
+        this.check = true;
+      }else{
+        this.check = false;
+      }
+     });
+  }
+  
+  numberLikes (post_id) {
+    this.postService.numberLikes(post_id).subscribe((res) => {
+      console.log(res);
+      this.likes = res;
+    });
   }
 }
