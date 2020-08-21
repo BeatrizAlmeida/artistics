@@ -70,7 +70,7 @@ export class RegisterPage implements OnInit {
   async errorToast() {
     const toast = await this.toastController.create({
       position: 'top',
-      message: 'Email já cadastrado!',
+      message: 'Erro ao se cadastrar!',
       duration: 4000
     });
     toast.present();
