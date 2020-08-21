@@ -8,6 +8,7 @@
 
 <ion-content>
 
+  <ion-button *ngIf = "isModerator" (click) = "deletePost(infosPost.id)" ><ion-icon class = "trash"  name="trash" ></ion-icon></ion-button>
   <ion-card color='medium'>
     <ion-card-title>{{infosPost.title}}</ion-card-title>
     <ion-card-subtitle>Feito por {{infosUser.name}}</ion-card-subtitle>
@@ -26,6 +27,7 @@
       <ion-label>
         <h2>{{comment.user_name}}</h2>
         <p>{{comment.text}}</p>
+        <ion-button *ngIf = "isModerator" (click) = "deleteComment(comment.id)" ><ion-icon class = "trash"  name="trash" ></ion-icon></ion-button>
       </ion-label>
     </ion-item>  
   </ion-list>  
