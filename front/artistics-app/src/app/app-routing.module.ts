@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
@@ -58,7 +62,8 @@ const routes: Routes = [
   {
     path: 'open-post',
     loadChildren: () => import('./open-post/open-post.module').then( m => m.OpenPostPageModule)
-  },  {
+  },
+  {
     path: 'comments',
     loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
   }

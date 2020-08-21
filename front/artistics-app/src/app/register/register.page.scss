@@ -45,3 +45,12 @@ ion-item{
     margin-bottom:10% ;
     margin-top:20% ;
 }
+
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration-line: underline;
+    margin-top: 30%;
+}

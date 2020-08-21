@@ -33,6 +33,7 @@ export class LogoutPage implements OnInit {
           handler: () => {
             console.log('Saindo...');
             this.desLog();
+            this.router.navigate(['/login']);
           }
         },
         {
